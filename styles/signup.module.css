@@ -1,0 +1,16 @@
+.form {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.login {
+  color: rgb(39, 39, 230);
+}
+
+.error {
+  background: rgb(240, 194, 194);
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border-radius: 0.25rem;
+}
