@@ -1,23 +1,28 @@
+import { Button } from '@mui/material';
+import { postPost, API_ENDPOINT } from './api/auth';
 import Layout from '../components/Layout';
-import Link from 'next/link';
 import PostsList from '../components/PostsList';
-import { isAuth } from '../utils';
-import { AppBar, Box, IconButton, Toolbar, Typography } from '@mui/material';
-import { Menu } from '@mui/icons-material';
 
 export default function Home({ posts }) {
-  // const isAuthenticated = isAuth();
-  console.log(posts);
+  const onClick = () => {
+    postPost({
+      title: 'test title 2',
+      body: 'another bs post from the client',
+      published: true,
+    });
+  };
+
   return (
     <Layout title="Home">
       <h1>My Blog</h1>
+      <Button onClick={onClick}>Add Post</Button>
       <PostsList posts={posts} />
     </Layout>
   );
 }
 
 export async function getStaticProps() {
-  const res = await fetch('http://localhost:5000/posts');
+  const res = await fetch(`${API_ENDPOINT}/posts`);
   const posts = await res.json();
 
   return {

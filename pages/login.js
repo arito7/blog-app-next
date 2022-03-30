@@ -4,6 +4,8 @@ import Link from 'next/link';
 import styles from '../styles/signup.module.css';
 import { useState } from 'react';
 import { login, logout, isAuth } from '../utils';
+import { postPost } from './api/auth';
+import { saveAuthData } from './api/auth';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -37,11 +39,12 @@ const Login = () => {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         const authData = {
           expiresIn: data.expiresIn,
           token: data.token,
         };
-        login(authData);
+        saveAuthData(authData);
       })
       .catch((err) => {
         console.log(err);
@@ -60,6 +63,7 @@ const Login = () => {
       ) : null}
       <Box component="form" className={styles.form}>
         <TextField
+          color="secondary"
           value={username}
           onChange={onUsernameChange}
           label="Username"

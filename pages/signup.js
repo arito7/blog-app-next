@@ -3,6 +3,8 @@ import { Box, Button, TextField, Typography } from '@mui/material';
 import styles from '../styles/signup.module.css';
 import Link from 'next/link';
 import { useState } from 'react';
+require('dotenv').config();
+
 const signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +23,7 @@ const signup = () => {
   };
 
   const onSignup = () => {
-    fetch('http://localhost:5000/register', {
+    fetch(`${process.env.API_ENDPOINT}/register`, {
       headers: {
         'Content-Type': 'application/json',
       },

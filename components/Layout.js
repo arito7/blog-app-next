@@ -1,6 +1,7 @@
 import Head from 'next/head';
 import Appbar from './Appbar';
 import styles from '../styles/Layout.module.css';
+import { Box } from '@mui/material';
 
 function Layout({ children, title }) {
   return (
@@ -9,7 +10,9 @@ function Layout({ children, title }) {
         <title>MiBlog | {title}</title>
       </Head>
       <Appbar />
-      <main className={styles.main}>{children}</main>
+      <main className={styles.main}>
+        <Box>{children}</Box>
+      </main>
     </div>
   );
 }
